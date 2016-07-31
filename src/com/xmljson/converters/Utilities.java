@@ -32,7 +32,7 @@ public class Utilities {
 	
 	private static final Logger LOGGER = Logger.getLogger (Utilities.class.getName ());
 	//String used for constructing xml in jsonValueToXml
-	static StringBuilder xmlString = new StringBuilder ();
+	//static StringBuilder xmlString = new StringBuilder ();
 	
 	/**
 	 * xmlConverter reads json from an input string and converts it to
@@ -50,7 +50,10 @@ public class Utilities {
 			LOGGER.log (Level.SEVERE, "Exception while parsing JSON. Error in syntax or unexpected beginning tokens, not [ or { ");
 			return "";
 		}
-		return jsonValueToXml(object, null);
+		//String used for constructing xml in jsonValueToXml
+		StringBuilder xmlString = new StringBuilder ();
+		jsonValueToXml (object, null, xmlString);
+		return xmlString.toString();
 	}
 	
 	/**
@@ -62,7 +65,7 @@ public class Utilities {
 	 * @param key Key corresponding to jsonValue
 	 * @return String containing the xml converted from json
 	 */
-	public static String jsonValueToXml (JsonValue jsonValue, String key) {
+	public static void jsonValueToXml (JsonValue jsonValue, String key, StringBuilder xmlString) {
 		switch (jsonValue.getValueType ()) {		
 			case OBJECT:
 				if (key != null) {
@@ -72,7 +75,7 @@ public class Utilities {
 			    }
 				JsonObject jsonObject = (JsonObject) jsonValue;
 		        for (String name : jsonObject.keySet ())
-		        	jsonValueToXml (jsonObject.get (name), name);
+		        	jsonValueToXml (jsonObject.get (name), name, xmlString);
 		        xmlString.append ("</object>");
 		        break;
 		        
@@ -84,7 +87,7 @@ public class Utilities {
 			     }
 		         JsonArray array = (JsonArray) jsonValue;
 		         for (JsonValue val : array)
-		        	 jsonValueToXml (val, null);
+		        	 jsonValueToXml (val, null, xmlString);
 		         xmlString.append ("</array>");
 		         break;
 		         
@@ -130,7 +133,7 @@ public class Utilities {
 		        }
 				break;
 		}
-		return xmlString.toString();
+		//return xmlString.toString();
 	}
 	
 	/**
