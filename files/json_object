@@ -1,0 +1,11 @@
+{
+    "nested_obj" : {
+        "string_test" : "Name",
+        "number_test" : 1,
+        "floating_num" : -1.00,
+        "null_test": null
+    },
+    "bool_test" : true,
+    "simple_array" : ["red", "green", "yellow", "blue"],
+    "nested_array" : [1, "red", [{ "bool" : true}], { "bool" : false}]
+}
