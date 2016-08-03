@@ -28,7 +28,7 @@
 	</manifestclasspath>
 	<jar jarfile="${ant.project.name}.jar" basedir="${classes.dir}">
 		<manifest>
-		<attribute name="Main-class" value="com.xmljson.converters.TestXMLJSONConverter"/>	
+		<attribute name="Main-class" value="com.xmljson.converters.XMLJSONConverterMain"/>	
 	    	<attribute name="Class-Path" value="${mf.classpath}"/>  
 		</manifest>
 	</jar>	

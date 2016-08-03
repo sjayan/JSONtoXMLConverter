@@ -20,7 +20,7 @@ public class XMLJSONConverter implements XMLJSONConverterI{
 	/**
     * Reads in the JSON from the given file and outputs the data, converted to
     * XML, to the given file. Exceptions are thrown by this method so that the
-    * caller can clean up the before exiting. Uses {@link Utilities} class to 
+    * caller can clean up the before exiting. Uses {@link JSONMethods} class to 
     * read/write to file, read JSON and convert to XML.
     *
     * @param json {@link java.io.File} from which to read JSON data.
@@ -28,16 +28,17 @@ public class XMLJSONConverter implements XMLJSONConverterI{
     * @throws IOException {@link java.io.IOException} 
     */
 	public void convertJSONtoXML (File json, File xml) throws IOException {
-		String jsonString = Utilities.readFile (json);
+		String jsonString = FileAccess.readFile (json);
 		if (jsonString.isEmpty() || jsonString == null) {
 			LOGGER.log (Level.SEVERE, "json string read from file is empty");	
 			return;
 		}
-		LOGGER.log (Level.INFO, "json string read from file: \n" + jsonString);	
-		String xmlString = Utilities.xmlConverter (jsonString);
+		LOGGER.log (Level.INFO, "json string read from file: \n" + jsonString);
+		JSONMethods jsonMethods = new JSONMethods();
+		String xmlString = jsonMethods.xmlConverter (jsonString);
 		if (xmlString.isEmpty() || xmlString == null) return;
 		LOGGER.log (Level.INFO, "Converted xml string: \n" + xmlString);
-		Utilities.writeFile (xml, xmlString);		
+		FileAccess.writeFile (xml, xmlString);		
 	}
 
 }
