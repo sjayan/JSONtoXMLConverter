@@ -1,1 +1,1 @@
-<array><number>1</number><string>red</string><array><object><boolean name="nested">true</boolean></object></array><object><boolean name="obj">false</boolean></object></array>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><array><number>1</number><string>red</string><array><object><boolean name="nested">true</boolean></object></array><object><boolean name="obj">false</boolean></object></array>
