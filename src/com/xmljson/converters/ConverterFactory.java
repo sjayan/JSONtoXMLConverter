@@ -11,6 +11,7 @@ public final class ConverterFactory {
      * @return {@link XMLJSONConverter} 
      */
     public static final XMLJSONConverterI createXMLJSONConverter() {
+    	//returning instance of XMLJSONConverter
        return new XMLJSONConverter ();
     }
 }

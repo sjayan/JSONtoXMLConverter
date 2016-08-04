@@ -11,6 +11,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Class containing file access methods 
+ * 
  * @author suranya
  *
  */
@@ -32,6 +34,7 @@ public class FileAccess {
 		try {
 			fileReader = new BufferedReader (new FileReader (file));
 		} catch (FileNotFoundException e) {
+			//if the input file (json file) is invalid, throw exception and exit
 			LOGGER.log (Level.SEVERE, "File not found exception for " + file.getName());
 			throw new IOException();
 		}
@@ -44,11 +47,14 @@ public class FileAccess {
 				line = fileReader.readLine ();
 			}
 		}catch (IOException e){
+			//if the json file cannot be read, throw exception and exit
 			LOGGER.log (Level.SEVERE, "Exception while reading file " + file.getName());
 			throw new IOException();
 		} finally{
+			//in case file closing throws IOException, it will be caught in the calling class
 			fileReader.close ();
 		}
+		//file contents returned as string
 		return string.toString();
 	}
 	

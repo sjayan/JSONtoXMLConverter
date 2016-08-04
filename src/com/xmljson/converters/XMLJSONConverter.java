@@ -28,12 +28,15 @@ public class XMLJSONConverter implements XMLJSONConverterI{
     * @throws IOException {@link java.io.IOException} 
     */
 	public void convertJSONtoXML (File json, File xml) throws IOException {
+		//readFile reads json from file and returns it as a string
 		String jsonString = FileAccess.readFile (json);
+		//Throw exception/exit if json file is empty
 		if (jsonString.isEmpty() || jsonString == null) {
 			LOGGER.log (Level.SEVERE, "JSON string read from file is empty");	
 			throw new IOException();
 		}
 		LOGGER.log (Level.INFO, "json string read from file: \n" + jsonString);
+		//JSONMethods class converts json string to xml form and writes it to file
 		JSONMethods jsonMethods = new JSONMethods();
 		jsonMethods.xmlConverter (jsonString, xml);	
 	}
