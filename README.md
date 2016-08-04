@@ -1,8 +1,8 @@
 XMLJSONConverter
 
 Converts JSON to XML form with the JSON type as the tag and JSON name as an attribute.
-Most libraries convert JSON to standard XML form, so I made one to construct XML in a free form.
-Porject build using Ant.
+Most libraries convert JSON to standard XML form, this project constructs XML in a free form using javax.json and javax.xml libraries.
+Porject is build using Ant.
  
 BUILD
 
@@ -30,5 +30,13 @@ PROJECT FILES
 	 |______ files : Sample input/output files
 	 |______ build.xml : Ant build configurations
 	 |______ autorun.sh : Shell script that can compile and test the project 
-	 |______ README
+	 |______ README.md
+
+
+TEST CASES
+
+I tested for some commmon test cases - 
+Valid cases: json array, json object, new xml file with valid path, empty xml file
+Invalid cases: no input files, invalid json file, empty json file, invalid xml file, json not starting with array or object, json grammar error
+
 
