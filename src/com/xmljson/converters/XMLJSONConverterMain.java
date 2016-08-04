@@ -35,8 +35,7 @@ public class XMLJSONConverterMain {
 			try {
 				xmljsonConverter.convertJSONtoXML (jsonFile, xmlFile);
 			} catch (IOException e) {
-				LOGGER.log (Level.SEVERE, "IOException while reading/writing to files");
-				//e.printStackTrace();
+				LOGGER.log (Level.SEVERE, "Exception while reading/writing to files. Couldn't do conversion!");
 			}
 		}
 	}

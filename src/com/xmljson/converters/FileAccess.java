@@ -27,21 +27,28 @@ public class FileAccess {
 	 * @throws IOException {@link java.io.IOException} 
 	 */
 	public static String readFile (File file) throws IOException {
+		LOGGER.log (Level.INFO, "Reading file : " + file.getName());
 		BufferedReader fileReader = null;
 		try {
 			fileReader = new BufferedReader (new FileReader (file));
 		} catch (FileNotFoundException e) {
 			LOGGER.log (Level.SEVERE, "File not found exception for " + file.getName());
-			return "";
+			throw new IOException();
 		}
 		StringBuilder string = new StringBuilder ();
-		String line = fileReader.readLine ();
-		while (line != null) {
-			string.append (line);
-			string.append ("\n");
-			line = fileReader.readLine ();
+		try {
+			String line = fileReader.readLine ();
+			while (line != null) {
+				string.append (line);
+				string.append ("\n");
+				line = fileReader.readLine ();
+			}
+		}catch (IOException e){
+			LOGGER.log (Level.SEVERE, "Exception while reading file " + file.getName());
+			throw new IOException();
+		} finally{
+			fileReader.close ();
 		}
-		fileReader.close ();
 		return string.toString();
 	}
 	
