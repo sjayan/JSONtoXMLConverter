@@ -20,23 +20,5 @@ EXTERNAL LIBRARIES
 
 javax.json-1.0.4.jar : JavaEE API available for processing JSON
 
-PROJECT FILES
-
-	XMLJSONConverter
-	 |______ bin : for class files
-	 |______ src : source files
-	 |______ lib : external libraries
-	 |______ doc : javadocs for the source files
-	 |______ files : Sample input/output files
-	 |______ build.xml : Ant build configurations
-	 |______ autorun.sh : Shell script that can compile and test the project 
-	 |______ README.md
-
-
-TEST CASES
-
-I tested for some commmon test cases - 
-Valid cases: json array, json object, new xml file with valid path, empty xml file
-Invalid cases: no input files, invalid json file, empty json file, invalid xml file, json not starting with array or object, json grammar error
 
 
